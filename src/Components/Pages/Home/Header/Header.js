@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
         <div className="navbar bg-base-100 shadow-sm">
             <div className="flex-1">
-                <p className="btn btn-ghost italic normal-case text-xl font-bold">SKY<small className='text-sm'>photography</small></p>
+                <Link to='/' className="btn btn-ghost italic normal-case text-xl font-bold">SKY<small className='text-sm'>photography</small></Link>
             </div>
             
             <div className="flex-none">
