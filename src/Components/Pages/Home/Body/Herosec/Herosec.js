@@ -2,7 +2,7 @@ import React from 'react';
 
 const Herosec = () => {
     return (
-        <div className='relative min-h-screen bg-fixed bg-[url("https://i0.wp.com/grandcanyonweddingpackages.com/wp-content/uploads/2018/12/cropped-Grand-Canyon-Wedding-Packages-Favorites-201810.jpg?w=1932&ssl=1")] bg-cover bg-no-repeat bg-center'>
+        <div className='relative italic min-h-screen bg-fixed bg-[url("https://i0.wp.com/grandcanyonweddingpackages.com/wp-content/uploads/2018/12/cropped-Grand-Canyon-Wedding-Packages-Favorites-201810.jpg?w=1932&ssl=1")] bg-cover bg-no-repeat bg-center'>
             <h1 className='absolute bottom-36 left-10 text-8xl text-white'>
                 SKY
             </h1>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Service = () => {
     const [Services , setservices] = useState([]);
@@ -25,7 +26,7 @@ const Service = () => {
 
 
 function Showevents({serviceCard}){
-    const {img, rating,price,name,dis} = serviceCard
+    const {img, rating,price,name,dis,_id} = serviceCard
 return(
     <div >
         <div className="card w-96 bg-base-100 shadow-xl image-full">
@@ -38,7 +39,7 @@ return(
                 <p>Rating : {rating}</p>
             </div>
             <div className="card-actions justify-end">
-            <button className="btn btn-ghost w-full">VIEW DETAILS</button>
+            <Link to={`/services/${_id}`} className="btn btn-ghost w-full">VIEW DETAILS</Link>
             </div>
         </div>
         </div>
