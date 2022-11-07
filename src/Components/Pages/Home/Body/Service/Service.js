@@ -12,8 +12,9 @@ const Service = () => {
 
 
     return (
-        <div className='flex gap-4 justify-center my-20'>
-          
+        <div>
+            <h1 className='text-3xl italic my-2'>My services</h1>
+            <div className='flex gap-4 justify-center my-14'>
             {
                 Services.map(serviceCard => <Showevents 
                     serviceCard={serviceCard}
@@ -21,11 +22,13 @@ const Service = () => {
                 ></Showevents>)
             }
         </div>
+        <Link to='/services' className='btn btn-outline mb-4'>View All</Link>
+        </div>
     );
 };
 
 
-function Showevents({serviceCard}){
+export function Showevents({serviceCard}){
     const {img, rating,price,name,dis,_id} = serviceCard
 return(
     <div >
