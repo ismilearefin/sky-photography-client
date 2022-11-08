@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { Authcontext } from '../../../Usercontext/Usercontext';
 import ReviewSec from './ReviewSec/ReviewSec';
 
@@ -60,7 +60,8 @@ const ServicePage = () => {
         <div className='p-4 shadow-inner'>
         <ReviewSec service={name}></ReviewSec>
         </div>
-        <div>
+        {user?.uid ?
+            <div>
             <div className='flex justify-center'>
                 <div className='border p-4 shadow-lg my-4'>
                 <form onSubmit={(e)=>handleSubmiteCmt(e)}>
@@ -71,6 +72,11 @@ const ServicePage = () => {
                 </div>
             </div>
         </div>
+        :
+        <div>
+            <Link to='/login' className='text-md my-4 btn btn-outline'>Please login to add a review</Link>
+        </div>
+    }
         </div>
     );
 };

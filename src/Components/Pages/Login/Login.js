@@ -30,12 +30,10 @@ const Login = () => {
             console.log(errorMessage);
             seterror(errorMessage)
             });
-       
     }
 
     function googlepoup(){
         
-       
         googlesignup()
         .then((result) => {
             
