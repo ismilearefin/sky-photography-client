@@ -4,16 +4,25 @@ import { Authcontext } from '../../../Usercontext/Usercontext';
 const Myreview = () => {
     const {user} = useContext(Authcontext);
     const [userComment, setuserComment] = useState([])
+    const [remainingComment, setremainingComment] = useState(userComment);
     
+
+
     useEffect(()=>{
-        fetch(`http://localhost:5000/allcomments/user?email=${user?.email}`)
-        .then(res => res.json())
-        .then(data => setuserComment(data))
+        if(!user?.email){
+            return <div>loading...</div>
+        }
+        else{
+            fetch(`http://localhost:5000/allcomments/user?email=${user?.email}`)
+            .then(res => res.json())
+            .then(data => {
+            console.log(data)
+            setuserComment(data)})
+        }
     },[user?.email])
     console.log(userComment)
-    //////////////////
     
-    const [remainingComment, setremainingComment] = useState(userComment);
+    
 
     function CommentDelete(_id){
         const agree = window.confirm('Do you want to delete this comment?')
