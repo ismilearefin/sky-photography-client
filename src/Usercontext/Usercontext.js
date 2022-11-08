@@ -7,30 +7,33 @@ export const Authcontext = createContext()
 
 const provider = new GoogleAuthProvider();
 const auth = getAuth(app);
+
 const Usercontext = ({children}) => {
-    const [user,setuser] = useState([]);
+    const [user,setuser] = useState(null);
     const [loading, setloading] = useState(true);
 
     function googlesignup(){
+      setloading(true)
       return signInWithPopup(auth, provider)
     };
     function signin(email,password){
+        setloading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     };
     function login(email,password){
+        setloading(true)
         return signInWithEmailAndPassword(auth, email, password)
     };
     useEffect(()=>{
       const unsubscribe =  onAuthStateChanged(auth, (currentuser) => {
-            if (currentuser) {
+            
               setuser(currentuser);
               setloading(false);
-            } else {
+      })
 
-            }
             return () => unsubscribe();
-          });
-    },[user])
+          
+    },[])
 
     function updateUserProfile (name,image){
         updateProfile(auth.currentUser, {

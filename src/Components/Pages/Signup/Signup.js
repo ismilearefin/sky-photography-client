@@ -1,10 +1,13 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Authcontext } from '../../../Usercontext/Usercontext';
 
 const Signup = () => {
     const {signin , updateUserProfile,googlesignup} = useContext(Authcontext);
     const [error,seterror] = useState('')
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/'
 
     function handlesubmit(e){
         e.preventDefault()
@@ -13,6 +16,8 @@ const Signup = () => {
         const email = form.email.value;
         const password = form.password.value;
         const image = form.url.value;
+        
+
         console.log(name,email,password)
         signin(email,password)
         .then((userCredential) => {
@@ -21,6 +26,7 @@ const Signup = () => {
             updateUserProfile(name,image)
             form.reset();
             seterror('')
+            navigate(from, {replace:true});
             console.log(user)
             // ...
             })
@@ -38,6 +44,7 @@ const Signup = () => {
             
             const user = result.user;
             console.log(user)
+            navigate(from, {replace:true});
             // ...
             }).catch((error) => {
             // Handle Errors here.

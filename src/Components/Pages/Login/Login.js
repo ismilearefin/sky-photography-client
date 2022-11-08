@@ -1,27 +1,28 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Authcontext } from '../../../Usercontext/Usercontext';
 
 
 const Login = () => {
     const {login, googlesignup} = useContext(Authcontext)
     const [error,seterror] = useState('')
-
-
-
+    const navigate = useNavigate();
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/'
     function handlesubmiteLogin(e){
         e.preventDefault()
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-
+      
         login(email,password)
         .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
             console.log(user)
-            seterror('')
-            form.reset()
+            seterror('');
+            navigate(from, {replace:true});
+            form.reset();
             // ...
         })
         .catch((error) => {
@@ -29,10 +30,25 @@ const Login = () => {
             console.log(errorMessage);
             seterror(errorMessage)
             });
+       
     }
 
     function googlepoup(){
+        
+       
         googlesignup()
+        .then((result) => {
+            
+            const user = result.user;
+            console.log(user)
+            navigate(from, {replace:true});
+            // ...
+            }).catch((error) => {
+            // Handle Errors here.
+            const errorMessage = error.message;
+            seterror(errorMessage)
+            
+            });
     }
 
     return (
@@ -67,9 +83,9 @@ const Login = () => {
                 <div className="form-control mt-6">
                     <button onClick={googlepoup} className="btn btn-primary">Google</button>
                 </div>
-            <div className='mt-5'>
+            {/* <div className='mt-5'>
                 <Link to='/' className='btn btn-outline'>Go Back</Link>
-            </div>
+            </div> */}
             </div>
         </div>
     );
