@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Authcontext } from '../Contextprovidor/Contextprovidor';
+import { Authcontext } from '../../../Usercontext/Usercontext';
+
 
 const Login = () => {
     const {login} = useContext(Authcontext)
@@ -49,7 +50,7 @@ const Login = () => {
                     </label>
                     <input type="password" name="password" placeholder="password" className="input input-bordered" required/>
                     <label className="label">
-                    <p  className="label-text-alt ">Don't have any account? <Link to='/signin' className='link'>Signin</Link></p>
+                    <p  className="label-text-alt ">Don't have any account? <Link to='/signup' className='link'>Signup</Link></p>
                     </label>
                     <label className="label">
                     <p  className="label-text-alt text-red-600">{error}</p>
