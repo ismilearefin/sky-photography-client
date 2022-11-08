@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Authcontext } from '../../../Usercontext/Usercontext';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Myreview = () => {
     const {user} = useContext(Authcontext);
     const [userComment, setuserComment] = useState([])
-    const [remainingComment, setremainingComment] = useState(userComment)
+    // const [remainingComment, setremainingComment] = useState(userComment)
     
     
     
@@ -18,7 +19,7 @@ const Myreview = () => {
             .then(data => {
                 console.log(data)
                 setuserComment(data)
-                setremainingComment(data)
+                // setremainingComment(data)
             })
             }
         },[user?.email])
@@ -37,22 +38,22 @@ const Myreview = () => {
                 console.log(data)
                 if(data.deletedCount > 0){
                     const showCmt = userComment.filter(cmt => cmt._id !== _id);
-                    setremainingComment(showCmt);
-                    alert('Comment deleted successfully.')
-                    console.log(_id)
+                    // setremainingComment(showCmt);
+                    toast.success('Comment deleted successfully.')
+                    console.log(showCmt)
                 }
             })
         }
     }
 
-console.log(remainingComment)
+// console.log(remainingComment)
 
 
 
     return (
         <div className='min-h-screen mt-5'>
-            my All Reviews {remainingComment.length}
-            <div>
+           {userComment.length !== 0 ?
+           <div>
             <div className="overflow-x-auto  mx-2">
                 <div className="table w-full">                   
                     <div>
@@ -65,7 +66,7 @@ console.log(remainingComment)
                     </div>
                     <div>
                     {
-                        remainingComment.map(cart =>  {
+                        userComment.map(cart =>  {
                     return ( <div key={cart._id}>
                     <div className='flex justify-between items-center mt-4 p-4 border'>
                         <div>
@@ -96,8 +97,17 @@ console.log(remainingComment)
                     }
                     </div>
                 </div>
+                <Toaster
+                    position="top-center"
+                    reverseOrder={false}
+                    />
                 </div>
             </div>
+            :
+            <div className='min-h-screen flex items-center justify-center'>
+                <p className='text-3xl font-bold'>NO reviews were added</p>
+            </div>
+            }
         </div>
     );
 };
