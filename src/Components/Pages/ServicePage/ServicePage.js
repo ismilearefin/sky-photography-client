@@ -1,23 +1,37 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { Authcontext } from '../../../Usercontext/Usercontext';
 import ReviewSec from './ReviewSec/ReviewSec';
 
 const ServicePage = () => {
+    const {user} = useContext(Authcontext)
     const viewservice = useLoaderData();
-    // console.log(viewservice)
     const {dis, img,list,name} = viewservice
 
-    function handleSubmiteCmt(e,){
+    function handleSubmiteCmt(e){
         e.preventDefault()
         const form = e.target;
-        const username = form.name.value;
         const comment = form.message.value;
         const comments = {
-            name : username,
+            img : user?.photoURL,
+            name : user?.displayName,
+            email : user?.email,
             comment : comment,
             service : name
         }
         console.log(comments);
+
+        fetch('http://localhost:5000/allcomments',{
+            method : 'POST',
+            headers :{
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(comments)
+        })
+        .then(res => res.json())
+        .then(data => console.log(data))
+
+        form.reset()
     }
 
 
@@ -44,16 +58,12 @@ const ServicePage = () => {
         </div>
         </div>
         <div className='p-4 shadow-inner'>
-        <ReviewSec></ReviewSec>
+        <ReviewSec service={name}></ReviewSec>
         </div>
         <div>
             <div className='flex justify-center'>
                 <div className='border p-4 shadow-lg my-4'>
                 <form onSubmit={(e)=>handleSubmiteCmt(e)}>
-                    <input type='text' name='name' placeholder='user name' className='block my-2 p-2 border w-full h-10'/>
-                    <input type='text' name='service' defaultValue={name} className='block my-2 p-2 border w-full h-10' />
-                    <input type='text' name='email' defaultValue='put email' className='block my-2 p-2 border w-full h-10' />
-                    
                     <textarea name="message" rows="4" placeholder='comment...' cols="55" className='block border p-2'>
                     </textarea>
                     <button className='btn btn-success w-44 my-2'>Submit</button>
