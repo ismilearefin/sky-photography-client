@@ -1,14 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const Header = () => {
     return (
-        <div className="navbar bg-base-100 shadow-sm">
-            <div className="flex-1">
+        <div className="navbar bg-base-100 shadow-sm flex justify-between">
+            <div className="flex">
                 <Link to='/' className="btn btn-ghost italic normal-case text-xl font-bold">SKY<small className='text-sm'>photography</small></Link>
             </div>
-            
-            <div className="flex-none">
+            <div className='flex gap-5 font-bold '>
+                <NavLink to='/review'>My reviews</NavLink>
+                <NavLink to='/addservice'>Add service</NavLink>
+                <NavLink to='/blog'>Blogs</NavLink>
+                <NavLink to='/login'>Login</NavLink>
+            </div>
+            <div className="flex">
                 <div className="dropdown dropdown-end">
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                     <div className="w-10 rounded-full">

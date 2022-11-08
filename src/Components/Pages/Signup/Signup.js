@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Authcontext } from '../../../Usercontext/Usercontext';
 
 const Signup = () => {
-    const {signin , updateUserProfile} = useContext(Authcontext);
+    const {signin , updateUserProfile,googlesignup} = useContext(Authcontext);
     const [error,seterror] = useState('')
 
     function handlesubmit(e){
@@ -12,13 +12,15 @@ const Signup = () => {
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
+        const image = form.url.value;
         console.log(name,email,password)
         signin(email,password)
         .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
-            updateUserProfile(name)
-            
+            updateUserProfile(name,image)
+            form.reset();
+            seterror('')
             console.log(user)
             // ...
             })
@@ -28,24 +30,45 @@ const Signup = () => {
                 seterror(errorMessage);
                 // ..
             });
-
     }
 
+    function googlepopup(){
+        googlesignup()
+        .then((result) => {
+            
+            const user = result.user;
+            console.log(user)
+            // ...
+            }).catch((error) => {
+            // Handle Errors here.
+            const errorMessage = error.message;
+            seterror(errorMessage)
+            
+            });
+    }
 
 
     return (
         <div className="hero min-h-screen bg-base-200">
-        <div>
+        <div className='flex items-center gap-8'>
         <div className="text-center ">
             <h1 className="text-5xl font-bold mb-8">SIGN IN NOW!</h1>
+            
+            <Link to='/' className='btn btn-outline mt-4'>Go Back</Link>
         </div>
-        <form onSubmit={(e)=>handlesubmit(e)} className="card flex-shrink-0 w-full px-10 max-w-sm shadow-2xl bg-base-100">
+        <form onSubmit={(e)=>handlesubmit(e)} className="card flex-shrink-0 w-full  max-w-sm shadow-2xl bg-base-100">
             <div className="card-body">
             <div className="form-control">
                 <label className="label">
                 <span className="label-text">User Name</span>
                 </label>
                 <input type="text" name="name" placeholder="name" className="input input-bordered" required/>
+            </div>
+            <div className="form-control">
+                <label className="label">
+                <span className="label-text">User Image</span>
+                </label>
+                <input type="text" name="url" placeholder="Image url" className="input input-bordered" required/>
             </div>
             <div className="form-control">
                 <label className="label">
@@ -61,15 +84,17 @@ const Signup = () => {
                 <label className="label">
                 <p className="label-text-alt ">Already have an account? <Link to='/login' className='link'>Login</Link></p>
                 </label>
-                <label className="label">
                     <p  className="label-text-alt text-red-600">{error}</p>
-                </label>
             </div>
             <div className="form-control mt-6">
                 <button className="btn btn-primary">Sign in</button>
             </div>
             </div>
+            <div className="form-control ">
+                <button onClick={googlepopup} className="btn btn-primary">Google</button>
+            </div>
         </form>
+        
         </div>
     </div>
     );
