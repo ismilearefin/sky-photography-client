@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext} from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { Authcontext } from '../../../Usercontext/Usercontext';
 import ReviewSec from './ReviewSec/ReviewSec';
@@ -6,7 +6,6 @@ import ReviewSec from './ReviewSec/ReviewSec';
 const ServicePage = () => {
     const {user} = useContext(Authcontext)
     const viewservice = useLoaderData();
-    const [post, setpost] = useState(true)
     const {dis, img,list,name} = viewservice
     
     function handleSubmiteCmt(e){
@@ -31,7 +30,6 @@ const ServicePage = () => {
         })
         .then(res => res.json())
         .then(data => {
-            setpost(false)
             alert('Submited')
             console.log(data)
         })
@@ -63,7 +61,7 @@ const ServicePage = () => {
         </div>
         </div>
         <div className='p-4 shadow-inner'>
-        <ReviewSec service={name} post={post}></ReviewSec>
+        <ReviewSec service={name}></ReviewSec>
         </div>
         {user?.uid ?
             <div>

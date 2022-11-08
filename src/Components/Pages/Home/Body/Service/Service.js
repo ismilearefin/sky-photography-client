@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { FaAngleRight } from "react-icons/fa";
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Link } from 'react-router-dom';
 
@@ -23,7 +24,7 @@ const Service = () => {
                 ></Showevents>)
             }
         </div>
-        <Link to='/services' className='btn btn-outline mb-4'>View All</Link>
+        <Link to='/services' className='btn btn-outline mb-4'>SEE All <FaAngleRight className='ml-1'/></Link>
         </div>
     );
 };

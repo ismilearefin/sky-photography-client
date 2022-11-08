@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { FaSketch } from "react-icons/fa";
 import { Link, NavLink } from 'react-router-dom';
 import { Authcontext } from '../../../../Usercontext/Usercontext';
 
@@ -10,7 +11,7 @@ const Header = () => {
     return (
         <div className="navbar bg-base-100 shadow-sm flex justify-between">
             <div className="flex">
-                <Link to='/' className="btn btn-ghost italic normal-case text-xl font-bold">SKY<small className='text-sm'>photography</small></Link>
+                <Link to='/' className="btn btn-ghost italic normal-case text-xl font-bold">SKY <small className='text-sm'><FaSketch className='text-2xl'/>photography</small></Link>
             </div>
             <div className='flex gap-5 font-bold '>
                 <NavLink to='/blog' className='btn btn-outline '>Blogs</NavLink>

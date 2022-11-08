@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaSketch } from "react-icons/fa";
 
 const Herosec = () => {
     return (
@@ -6,7 +7,7 @@ const Herosec = () => {
             <h1 className='absolute bottom-36 left-10 text-8xl text-white'>
                 SKY
             </h1>
-            <p className= 'absolute bottom-28 left-32 text-4xl text-slate-100'>photography</p>
+            <p className= 'absolute bottom-28 left-32 text-4xl text-slate-100'><FaSketch/>photography</p>
         </div>
     );
 };
