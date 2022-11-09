@@ -13,11 +13,14 @@ const AllService = () => {
             <div>
             <h1 className='text-3xl italic my-2'>My services</h1>
             <div className='flex gap-4 justify-center flex-wrap my-14'>
-            {
+            {allservices ?
+
                 allservices.map(serviceCard => <ShowAllCard 
                     serviceCard={serviceCard}
                     key={serviceCard._id}
                 ></ShowAllCard>)
+                :
+                <p>loading.........</p>
             }
         </div>
         </div>

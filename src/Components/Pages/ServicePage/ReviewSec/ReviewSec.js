@@ -4,7 +4,7 @@ const ReviewSec = ({service}) => {
     const [allcomments, setallcomments] = useState([]);
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/allcomments?service=${service}`)
+            fetch(`http://localhost:5000/allcomments?service=${service}`)
         .then(res => res.json())
         .then(data => {
             

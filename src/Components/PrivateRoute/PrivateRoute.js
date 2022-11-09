@@ -1,6 +1,11 @@
 import  { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { Authcontext } from '../../Usercontext/Usercontext';
+import {RotatingLines } from  'react-loader-spinner'
+
+
+
+
 
 const PrivateRoute = ({children}) => {
     const {user,loading} = useContext(Authcontext)
@@ -8,7 +13,13 @@ const PrivateRoute = ({children}) => {
     // console.log(location)
        
     if(loading){
-        return <div>loading....</div>
+        return (<div className='flex justify-center items-center min-h-screen'><RotatingLines
+        strokeColor="grey"
+        strokeWidth="5"
+        animationDuration="0.75"
+        width="96"
+        visible={true}
+      /></div>)
     }
         if(user && user.uid){
             return children

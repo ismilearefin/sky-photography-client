@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Authcontext } from '../../../Usercontext/Usercontext';
 import toast, { Toaster } from 'react-hot-toast';
 import useTitle from '../../../Hooks/useTitle';
+import { RotatingLines } from 'react-loader-spinner';
 
 const Myreview = () => {
     useTitle('myreview')
@@ -13,7 +14,15 @@ const Myreview = () => {
     
     useEffect(()=>{
         if(!user?.email){
-            return <div>loading...</div>
+            return (<div className='flex justify-center items-center min-h-screen'>
+                <RotatingLines
+            strokeColor="grey"
+            strokeWidth="5"
+            animationDuration="0.75"
+            width="96"
+            visible={true}
+          />
+          </div>)
         }
         else{
             fetch(`http://localhost:5000/allcomments/user?email=${user?.email}`)
