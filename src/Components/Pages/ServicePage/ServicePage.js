@@ -51,8 +51,10 @@ const ServicePage = () => {
                     <p className='font-bold'># {name}</p>
                     <p className='mb-4'>{dis}</p>
                         <>
-                            {
-                                list.map(point => <li key={point}>{point}</li>)
+                            {list ?
+                                list?.map(point => <li key={point}>{point}</li>)
+                            :
+                            ''
                             }
                         </>
                     </div>
