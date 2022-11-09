@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import useTitle from '../../../Hooks/useTitle';
+import { Authcontext } from '../../../Usercontext/Usercontext';
 
 const Addservice = () => {
     useTitle('addservice')
+    const {logout} = useContext(Authcontext)
     
     function handleAddservice(e){
         e.preventDefault();
@@ -25,11 +27,17 @@ const Addservice = () => {
         fetch('http://localhost:5000/allservices',{
             method: "POST",
             headers:{
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('token')}`
             },
             body: JSON.stringify(myservice)
         })
-        .then(res => res.json())
+        .then(res => {
+            if(res.status === 401 || res.status === 403){
+                logout()
+            }
+            return  res.json()
+        })
         .then(data => {
             toast.success('Added successfully.')
             console.log(data)

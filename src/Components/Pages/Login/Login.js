@@ -21,9 +21,26 @@ const Login = () => {
         .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
-            console.log(user)
+            console.log(user);
+            const currentUser = {
+                email: user.email
+            }
+            //get jwt token & set token in localStorage
+            fetch('http://localhost:5000/jwt', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(currentUser)
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                localStorage.setItem('token',data.token);
+                navigate(from, {replace:true});
+            })
             seterror('');
-            navigate(from, {replace:true});
+            
             form.reset();
             // ...
         })
@@ -41,7 +58,24 @@ const Login = () => {
             
             const user = result.user;
             console.log(user)
-            navigate(from, {replace:true});
+            const currentUser = {
+                email: user.email
+            }
+            //get jwt token & set token in localStorage
+            fetch('http://localhost:5000/jwt', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(currentUser)
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                localStorage.setItem('token',data.token);
+                navigate(from, {replace:true});
+            })
+            // navigate(from, {replace:true});
             // ...
             }).catch((error) => {
             // Handle Errors here.

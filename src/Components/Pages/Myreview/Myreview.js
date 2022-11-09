@@ -6,7 +6,7 @@ import { RotatingLines } from 'react-loader-spinner';
 
 const Myreview = () => {
     useTitle('myreview')
-    const {user} = useContext(Authcontext);
+    const {user,logout} = useContext(Authcontext);
     const [userComment, setuserComment] = useState([])
     // const [remainingComment, setremainingComment] = useState(userComment)
     
@@ -25,15 +25,24 @@ const Myreview = () => {
           </div>)
         }
         else{
-            fetch(`http://localhost:5000/allcomments/user?email=${user?.email}`)
-            .then(res => res.json())
+            fetch(`http://localhost:5000/allcomments/user?email=${user?.email}`,{
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+            })
+            .then(res => {
+                if(res.status === 401 || res.status === 403){
+                    logout()
+                }
+                return  res.json()
+            })
             .then(data => {
                 console.log(data)
                 setuserComment(data)
                 // setremainingComment(data)
             })
             }
-        },[user?.email])
+        },[user?.email ,logout])
         // console.log(userComment)
     
     
