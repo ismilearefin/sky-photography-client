@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Authcontext } from '../../../Usercontext/Usercontext';
 import toast, { Toaster } from 'react-hot-toast';
+import useTitle from '../../../Hooks/useTitle';
 
 const Myreview = () => {
+    useTitle('myreview')
     const {user} = useContext(Authcontext);
     const [userComment, setuserComment] = useState([])
     // const [remainingComment, setremainingComment] = useState(userComment)

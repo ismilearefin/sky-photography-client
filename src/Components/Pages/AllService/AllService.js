@@ -1,9 +1,11 @@
 import React from 'react';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Link, useLoaderData } from 'react-router-dom';
+import useTitle from '../../../Hooks/useTitle';
 
 
 const AllService = () => {
+    useTitle('allservice')
     const allservices = useLoaderData();
     console.log(allservices)
     return (
@@ -44,7 +46,7 @@ function ShowAllCard({serviceCard}){
                     <p>Rating : {rating}</p>
                 </div>
                 <div className="card-actions justify-end">
-                <Link to={`/services/${_id}`} className="btn btn-ghost w-full shadow-md">VIEW DETAILS</Link>
+                <Link to={`/services/${_id}`} className="btn btn-ghost w-full shadow-md text-cyan-500">VIEW DETAILS</Link>
                 </div>
             </div>
             </div>

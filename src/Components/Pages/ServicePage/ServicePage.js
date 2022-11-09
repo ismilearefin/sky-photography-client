@@ -1,9 +1,11 @@
 import React, { useContext} from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import useTitle from '../../../Hooks/useTitle';
 import { Authcontext } from '../../../Usercontext/Usercontext';
 import ReviewSec from './ReviewSec/ReviewSec';
 
 const ServicePage = () => {
+    useTitle('service_page')
     const {user} = useContext(Authcontext)
     const viewservice = useLoaderData();
     const {dis, img,list,name} = viewservice

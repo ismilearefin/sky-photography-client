@@ -1,8 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import useTitle from '../../../Hooks/useTitle';
 import { Authcontext } from '../../../Usercontext/Usercontext';
 
 const Signup = () => {
+    useTitle('Signup')
     const {signin , updateUserProfile,googlesignup} = useContext(Authcontext);
     const [error,seterror] = useState('')
     const navigate = useNavigate()
