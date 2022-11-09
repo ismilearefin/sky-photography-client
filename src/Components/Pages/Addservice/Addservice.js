@@ -19,6 +19,18 @@ const Addservice = () => {
         }
         console.log(myservice)
         form.reset()
+        fetch('http://localhost:5000/allservices',{
+            method: "POST",
+            headers:{
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(myservice)
+        })
+        .then(res => res.json())
+        .then(data => {
+            alert('Added successfully')
+            console.log(data)
+        })
     }
 
 
