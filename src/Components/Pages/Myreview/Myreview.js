@@ -3,6 +3,7 @@ import { Authcontext } from '../../../Usercontext/Usercontext';
 import toast, { Toaster } from 'react-hot-toast';
 import useTitle from '../../../Hooks/useTitle';
 import { RotatingLines } from 'react-loader-spinner';
+import { Link } from 'react-router-dom';
 
 const Myreview = () => {
     useTitle('myreview')
@@ -21,8 +22,8 @@ const Myreview = () => {
             animationDuration="0.75"
             width="96"
             visible={true}
-          />
-          </div>)
+            />
+            </div>)
         }
         else{
             fetch(`http://localhost:5000/allcomments/user?email=${user?.email}`,{
@@ -68,6 +69,7 @@ const Myreview = () => {
 
 // console.log(remainingComment)
 
+//edit comment
 
 
     return (
@@ -109,7 +111,7 @@ const Myreview = () => {
                         <div>{cart.service}</div>
                         <div className='flex gap-2'>
                         <button onClick={()=>CommentDelete(cart._id)} className="btn btn-xs">X</button>
-                        <button className="btn btn-xs">edit</button>
+                        <Link to={`/editreview/${cart._id}`} className="btn btn-xs">edit</Link>
                         </div>
                     </div>
                     </div>)

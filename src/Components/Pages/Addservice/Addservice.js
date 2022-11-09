@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+// import React, { useContext } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import useTitle from '../../../Hooks/useTitle';
-import { Authcontext } from '../../../Usercontext/Usercontext';
+// import { Authcontext } from '../../../Usercontext/Usercontext';
 
 const Addservice = () => {
     useTitle('addservice')
-    const {logout} = useContext(Authcontext)
+    // const {logout} = useContext(Authcontext)
     
     function handleAddservice(e){
         e.preventDefault();
@@ -28,14 +28,14 @@ const Addservice = () => {
             method: "POST",
             headers:{
                 'content-type': 'application/json',
-                authorization: `Bearer ${localStorage.getItem('token')}`
+                // authorization: `Bearer ${localStorage.getItem('token')}`
             },
             body: JSON.stringify(myservice)
         })
         .then(res => {
-            if(res.status === 401 || res.status === 403){
-                logout()
-            }
+            // if(res.status === 401 || res.status === 403){
+            //     logout()
+            // }
             return  res.json()
         })
         .then(data => {

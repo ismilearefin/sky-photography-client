@@ -3,6 +3,7 @@ import Main from "../Layout/Main";
 import Addservice from "../Pages/Addservice/Addservice";
 import AllService from "../Pages/AllService/AllService";
 import Blog from "../Pages/Blog/Blog";
+import Editreview from "../Pages/Editreview/Editreview";
 import Body from "../Pages/Home/Body/Body";
 import Login from "../Pages/Login/Login";
 import Myreview from "../Pages/Myreview/Myreview";
@@ -41,6 +42,11 @@ export  const router = createBrowserRouter([
         {
           path:'/blog',
           element:<Blog></Blog>
+        },
+        {
+          path:'/editreview/:id',
+          element:<Editreview></Editreview>,
+          loader: ({params}) => fetch(`http://localhost:5000/allcomments/${params.id}`) 
         }
       ]
     },
