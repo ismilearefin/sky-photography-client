@@ -1,4 +1,5 @@
 import React from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Addservice = () => {
     
@@ -28,7 +29,7 @@ const Addservice = () => {
         })
         .then(res => res.json())
         .then(data => {
-            alert('Added successfully')
+            toast.success('Added successfully.')
             console.log(data)
         })
     }
@@ -58,7 +59,7 @@ const Addservice = () => {
                 <label className="label">
                     <span className="label-text">Rating</span>
                 </label>
-                <input type="number" name='rating' placeholder=" 5" className="input input-bordered" />
+                <input type="text" name='rating' placeholder=" 5" className="input input-bordered" />
                 </div>
                 <div className="form-control">
                 <label className="label">
@@ -79,6 +80,7 @@ const Addservice = () => {
             </div>
         </div>
         </div>
+        <Toaster/>
        </div>
     );
 };

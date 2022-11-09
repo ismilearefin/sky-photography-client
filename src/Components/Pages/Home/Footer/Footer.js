@@ -7,7 +7,7 @@ const Footer = () => {
        <div>
          <footer className="footer p-10 bg-base-200 text-base-content">
         <div>
-            <FaSketch className='text-7xl'/>
+            <FaSketch className='text-7xl text-cyan-400'/>
             <p>SKY photography.<br/>Providing reliable tech since 1992</p>
         </div> 
         <div>

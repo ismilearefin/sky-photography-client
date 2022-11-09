@@ -15,7 +15,7 @@ const Service = () => {
 
     return (
         <div>
-            <h1 className='text-3xl italic my-2'>My services</h1>
+            <h1 className='text-4xl italic my-6 text-cyan-500 '>My services</h1>
             <div className='flex gap-4 justify-center my-14'>
             {
                 Services.map(serviceCard => <Showevents 
@@ -24,7 +24,7 @@ const Service = () => {
                 ></Showevents>)
             }
         </div>
-        <Link to='/services' className='btn btn-outline mb-4'>SEE All <FaAngleRight className='ml-1'/></Link>
+        <Link to='/services' className='btn btn-outline mb-4'>SEE All <FaAngleRight className='ml-1 text-cyan-400'/></Link>
         </div>
     );
 };
@@ -50,7 +50,7 @@ return(
                 <p>Rating : {rating}</p>
             </div>
             <div className="card-actions justify-end">
-            <Link to={`/services/${_id}`} className="btn btn-ghost w-full shadow-md">VIEW DETAILS</Link>
+            <Link to={`/services/${_id}`} className="btn btn-ghost w-full shadow-md text-cyan-500">VIEW DETAILS</Link>
             </div>
         </div>
         </div>

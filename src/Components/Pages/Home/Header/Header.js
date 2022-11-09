@@ -11,26 +11,26 @@ const Header = () => {
     return (
         <div className="navbar bg-base-100 shadow-sm flex justify-between">
             <div className="flex">
-                <Link to='/' className="btn btn-ghost italic normal-case text-xl font-bold">SKY <small className='text-sm'><FaSketch className='text-2xl'/>photography</small></Link>
+                <Link to='/' className="btn btn-ghost italic normal-case text-xl font-bold">SKY <small className='text-sm'><FaSketch className='text-2xl text-cyan-400'/>photography</small></Link>
             </div>
             <div className='flex gap-5 font-bold '>
-                <NavLink to='/blog' className='btn btn-outline '>Blogs</NavLink>
+                <NavLink to='/blog' className='btn btn-ghost '>Blogs</NavLink>
                 {
                     user?.uid ?
-                    <NavLink to='/myreviews' className='btn btn-outline '>My reviews</NavLink>
+                    <NavLink to='/myreviews' className='btn btn-ghost '>My reviews</NavLink>
                     :
                     ''
                 }
                 {
                     user?.uid ?
-                    <NavLink to='/addservice' className='btn btn-outline '>Add service</NavLink>
+                    <NavLink to='/addservice' className='btn btn-ghost'>Add service</NavLink>
                     :
                     ''
                 }
                 {!user?.uid ? 
-                    <NavLink to='/login' className='btn btn-outline mx-1'>Login</NavLink>
+                    <NavLink to='/login' className='btn btn-ghost'>Login</NavLink>
                 :
-                    <button onClick={handleLogout} className='btn btn-outline '>Log Out</button>
+                    <button onClick={handleLogout} className='btn btn-ghost'>Log Out</button>
                 }
             </div>
             <div className="flex">
