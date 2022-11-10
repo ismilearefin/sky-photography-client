@@ -17,8 +17,8 @@ const Service = () => {
 
     return (
         <div>
-            <h1 className='text-4xl italic my-6 text-cyan-500 '>My services</h1>
-            <div className='flex gap-4 justify-center my-14'>
+            <h1 className='text-4xl my-6 text-cyan-500 '>My services</h1>
+            <div className='lg:flex gap-4 justify-center my-14'>
             { 
                 Services.map(serviceCard => <Showevents 
                     serviceCard={serviceCard}

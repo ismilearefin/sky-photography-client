@@ -24,7 +24,6 @@ const ServicePage = () => {
             comment : comment,
             service : name
         }
-        console.log(comments)
 
         fetch('https://sky-photography-server.vercel.app/allcomments',{
             method : 'POST',
@@ -45,16 +44,15 @@ const ServicePage = () => {
 
 ////Comment load by service name////////////
 
-useEffect(()=>{
+    useEffect(()=>{
 
-    fetch(`https://sky-photography-server.vercel.app/allcomments?service=${name}`)
-    .then(res => res.json())
-    .then(data => {
-    setallcomments(data)
-})
+        fetch(`https://sky-photography-server.vercel.app/allcomments?service=${name}`)
+        .then(res => res.json())
+        .then(data => {
+        setallcomments(data)
+    })
 
-},[name])
-
+    },[name])
 
 
 
@@ -87,11 +85,11 @@ useEffect(()=>{
         {user?.uid ?
             <div>
             <div className='flex justify-center'>
-                <div className='border p-4 shadow-lg my-4'>
+                <div className='border p-4 shadow-lg my-6'>
                 <form onSubmit={(e)=>handleSubmiteCmt(e)}>
-                    <textarea name="message" rows="4" placeholder='comment...' cols="55" className='block border p-2'>
+                    <textarea name="message" rows="4" placeholder='review..' cols="55" className='block border p-2'>
                     </textarea>
-                    <button className='btn btn-success w-44 my-2'>Submit</button>
+                    <button className='btn btn-ghost bg-cyan-300 w-44 my-2'>Submit</button>
                 </form>
                 </div>
             </div>

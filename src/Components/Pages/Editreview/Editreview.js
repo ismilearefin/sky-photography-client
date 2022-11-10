@@ -1,7 +1,8 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 
 const Editreview = () => {
+    const navigate = useNavigate();
     const editComment = useLoaderData()
     const {comment, name, img,service,_id } = editComment
 
@@ -23,7 +24,9 @@ const Editreview = () => {
         .then(res => res.json())
         .then(data=> {
             if(data.modifiedCount > 0){
-                alert('Updated Your data')
+                alert('Updated Your review')
+                navigate('/myreviews')
+
             }
             console.log(data)
         })

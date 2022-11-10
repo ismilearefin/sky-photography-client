@@ -56,7 +56,7 @@ const Myreview = () => {
                 if(data.deletedCount > 0){
                     const short = userComment.filter(cmnt => cmnt._id !== _id);
                     setuserComment(short);
-                    toast.success('Comment deleted successfully.')
+                    toast.success('review deleted successfully.')
                     console.log(short)
                 }
             })
@@ -76,8 +76,8 @@ const Myreview = () => {
                     <div>
                     <div className='px-4 flex justify-between text-lg py-2 font-bold bg-slate-50'>
                         <p>Name</p>
-                        <p>comment</p>
-                        <p>service</p>
+                        <p>Review</p>
+                        <p>Service</p>
                         <p></p>
                     </div>
                     </div>
