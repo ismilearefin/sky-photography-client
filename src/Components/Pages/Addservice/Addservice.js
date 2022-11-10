@@ -1,11 +1,9 @@
-// import React, { useContext } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import useTitle from '../../../Hooks/useTitle';
-// import { Authcontext } from '../../../Usercontext/Usercontext';
+
 
 const Addservice = () => {
     useTitle('addservice')
-    // const {logout} = useContext(Authcontext)
     
     function handleAddservice(e){
         e.preventDefault();
@@ -15,6 +13,11 @@ const Addservice = () => {
         const rating = form.rating.value;
         const price = form.price.value;
         const dis = form.dis.value;
+
+        if(rating > 5){
+            alert('You must give a review below 6')
+        }
+        
         const myservice = {
             name : name,
             img : url,
@@ -22,20 +25,19 @@ const Addservice = () => {
             price : price,
             dis : dis
         }
-        console.log(myservice)
         form.reset()
+
+        // add service useing POST method
+
         fetch('https://sky-photography-server.vercel.app/allservices',{
             method: "POST",
             headers:{
                 'content-type': 'application/json',
-                // authorization: `Bearer ${localStorage.getItem('token')}`
             },
             body: JSON.stringify(myservice)
         })
         .then(res => {
-            // if(res.status === 401 || res.status === 403){
-            //     logout()
-            // }
+            
             return  res.json()
         })
         .then(data => {
@@ -46,42 +48,41 @@ const Addservice = () => {
 
 
 
-
     return (
-       <div className='min-h-screen flex justify-center items-center'>
-        <div className="hero min-h-screen bg-base-200 ">
-        <div className="">
+        <div className='min-h-screen flex justify-center items-center'>
+        <div className="hero min-h-screen bg-cyan-50 ">
+        <div className="w-96">
             <div className=" shadow-2xl bg-base-100">
             <form onSubmit={(e)=>handleAddservice(e)} className="px-10 py-5">
                 <div className="form-control ">
                 <label className="label">
                     <span className="label-text">Name</span>
                 </label>
-                <input type="text" name='name' placeholder="email" className=" input input-bordered" />
+                <input type="text" name='name' placeholder="email" className=" input input-bordered" required/>
                 </div>
                 <div className="form-control">
                 <label className="label">
                     <span className="label-text">Image</span>
                 </label>
-                <input type="text" name='url' placeholder="url" className="input input-bordered" />
+                <input type="text" name='url' placeholder="url" className="input input-bordered" required/>
                 </div>
                 <div className="form-control">
                 <label className="label">
                     <span className="label-text">Rating</span>
                 </label>
-                <input type="text" name='rating' placeholder=" 5" className="input input-bordered" />
+                <input type="number" name='rating' placeholder=" 5" className="input input-bordered" required/>
                 </div>
                 <div className="form-control">
                 <label className="label">
                     <span className="label-text">Price</span>
                 </label>
-                <input type="number" name='price' placeholder="$" className="input input-bordered" />
+                <input type="number" name='price' placeholder="$" className="input input-bordered" required/>
                 </div>
                 <div className="form-control">
                 <label className="label">
                     <span className="label-text">Discription</span>
                 </label>
-                <textarea className="textarea" name='dis' placeholder="Bio"></textarea>
+                <textarea className="textarea" name='dis' placeholder="discription..." required></textarea>
                 </div>
                 <div className="form-control mt-6">
                 <button  className="btn btn-info">Add</button>
@@ -91,7 +92,7 @@ const Addservice = () => {
         </div>
         </div>
         <Toaster/>
-       </div>
+        </div>
     );
 };
 

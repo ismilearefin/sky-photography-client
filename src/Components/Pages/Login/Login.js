@@ -75,7 +75,6 @@ const Login = () => {
                 localStorage.setItem('token',data.token);
                 navigate(from, {replace:true});
             })
-            // navigate(from, {replace:true});
             // ...
             }).catch((error) => {
             // Handle Errors here.
@@ -117,9 +116,6 @@ const Login = () => {
                 <div className="form-control mt-6">
                     <button onClick={googlepoup} className="btn btn-primary">Google</button>
                 </div>
-            {/* <div className='mt-5'>
-                <Link to='/' className='btn btn-outline'>Go Back</Link>
-            </div> */}
             </div>
         </div>
     );

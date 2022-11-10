@@ -19,7 +19,7 @@ const Signup = () => {
         const password = form.password.value;
         const image = form.url.value;
         
-
+// email & password signup form
         console.log(name,email,password)
         signin(email,password)
         .then((userCredential) => {
@@ -39,7 +39,7 @@ const Signup = () => {
                 // ..
             });
     }
-
+// google signup popup
     function googlepopup(){
         googlesignup()
         .then((result) => {

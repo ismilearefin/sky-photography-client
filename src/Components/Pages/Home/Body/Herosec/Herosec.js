@@ -19,6 +19,7 @@ const Herosec = () => {
                 SKY
             </h1>
             <p className= 'absolute bottom-28 left-32 text-4xl text-slate-100'><FaSketch className='text-cyan-400'/>photography</p>
+            {/* drawer  */}
             <div>
                 <div className="drawer drawer-end">
                     <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />

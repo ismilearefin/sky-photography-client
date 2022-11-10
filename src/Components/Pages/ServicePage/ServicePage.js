@@ -38,9 +38,9 @@ const ServicePage = () => {
         .then(data => {
             alert('Submited')
             console.log(data)
+            form.reset()
         })
 
-        form.reset()
     }
 
 

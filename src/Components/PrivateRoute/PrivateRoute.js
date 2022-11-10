@@ -10,7 +10,6 @@ import {RotatingLines } from  'react-loader-spinner'
 const PrivateRoute = ({children}) => {
     const {user,loading} = useContext(Authcontext)
     const location = useLocation();
-    // console.log(location)
        
     if(loading){
         return (<div className='flex justify-center items-center min-h-screen'><RotatingLines

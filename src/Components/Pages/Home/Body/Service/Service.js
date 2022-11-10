@@ -9,19 +9,21 @@ const Service = () => {
     useEffect(()=>{
         fetch('https://sky-photography-server.vercel.app/service')
         .then(res => res.json())
-        .then(data => setservices(data))
+        .then(data => {
+            setservices(data)
+        })
     },[])
 
 
     return (
         <div>
-           <h1 className='text-4xl italic my-6 text-cyan-500 '>My services</h1>
+            <h1 className='text-4xl italic my-6 text-cyan-500 '>My services</h1>
             <div className='flex gap-4 justify-center my-14'>
-            {
+            { 
                 Services.map(serviceCard => <Showevents 
                     serviceCard={serviceCard}
                     key={serviceCard._id}
-                ></Showevents>)
+                    ></Showevents>)
             }
         </div>
         <Link to='/services' className='btn btn-outline mb-4'>SEE All <FaAngleRight className='ml-1 text-cyan-400'/></Link>
@@ -35,6 +37,7 @@ function Showevents({serviceCard}){
 return(
     <div >
         <div className="card w-96 bg-base-100 shadow-xl ">
+        {/* image zoom in */}
         <figure>
             <PhotoProvider>
                 <PhotoView src={img}>

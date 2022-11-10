@@ -3,14 +3,12 @@ import { useLoaderData } from 'react-router-dom';
 
 const Editreview = () => {
     const editComment = useLoaderData()
-    // console.log(editComment)
     const {comment, name, img,service,_id } = editComment
 
     function updateComment(e){
         e.preventDefault();
         const form = e.target;
         const comment = form.comment.value;
-        // console.log(comment)
         const newComment ={
             comment : comment
         }
