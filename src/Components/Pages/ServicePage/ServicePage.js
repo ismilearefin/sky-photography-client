@@ -24,22 +24,21 @@ const ServicePage = () => {
             comment : comment,
             service : name
         }
+        console.log(comments)
 
-        fetch('/allcomments',{
+        fetch('https://sky-photography-server.vercel.app/allcomments',{
             method : 'POST',
             headers :{
                 'content-type' : 'application/json'
             },
             body: JSON.stringify(comments)
         })
-        .then(res => {
-            return res.json()
-        })
+        .then(res => res.json())
         .then(data => {
             alert('Submited')
             console.log(data)
-            form.reset()
         })
+        form.reset()
 
     }
 
