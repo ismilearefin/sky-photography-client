@@ -1,4 +1,4 @@
-import React, { useContext} from 'react';
+import React, { useContext, useEffect, useState} from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import useTitle from '../../../Hooks/useTitle';
 import { Authcontext } from '../../../Usercontext/Usercontext';
@@ -8,6 +8,9 @@ const ServicePage = () => {
     useTitle('service_page')
     const {user} = useContext(Authcontext)
     const viewservice = useLoaderData();
+    const [allcomments, setallcomments] = useState([]);
+    
+    
     const {dis, img,list,name} = viewservice
     
     function handleSubmiteCmt(e){
@@ -21,16 +24,17 @@ const ServicePage = () => {
             comment : comment,
             service : name
         }
-        console.log(comments);
-        
-        fetch('http://localhost:5000/allcomments',{
+
+        fetch('/allcomments',{
             method : 'POST',
             headers :{
                 'content-type' : 'application/json'
             },
             body: JSON.stringify(comments)
         })
-        .then(res => res.json())
+        .then(res => {
+            return res.json()
+        })
         .then(data => {
             alert('Submited')
             console.log(data)
@@ -38,6 +42,20 @@ const ServicePage = () => {
 
         form.reset()
     }
+
+
+////Comment load by service name////////////
+
+useEffect(()=>{
+
+    fetch(`https://sky-photography-server.vercel.app/allcomments?service=${name}`)
+    .then(res => res.json())
+    .then(data => {
+    setallcomments(data)
+})
+
+},[name])
+
 
 
 
@@ -65,7 +83,7 @@ const ServicePage = () => {
         </div>
         </div>
         <div className='p-4 shadow-inner'>
-        <ReviewSec service={name}></ReviewSec>
+        <ReviewSec allcomments={allcomments}></ReviewSec>
         </div>
         {user?.uid ?
             <div>

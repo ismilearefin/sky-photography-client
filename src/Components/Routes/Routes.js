@@ -24,12 +24,12 @@ export  const router = createBrowserRouter([
         {
             path:'/services/:id',
             element:<ServicePage></ServicePage>,
-            loader:({params})=> fetch(`http://localhost:5000/services/${params.id}`)
+            loader:({params})=> fetch(`https://sky-photography-server.vercel.app/services/${params.id}`)
         },
         {
             path:'/services',
             element:<AllService></AllService>,
-            loader : () => fetch('http://localhost:5000/allservices')
+            loader : () => fetch('https://sky-photography-server.vercel.app/allservices')
         },
         {
           path:'/addservice',
@@ -46,7 +46,7 @@ export  const router = createBrowserRouter([
         {
           path:'/editreview/:id',
           element:<Editreview></Editreview>,
-          loader: ({params}) => fetch(`http://localhost:5000/allcomments/${params.id}`) 
+          loader: ({params}) => fetch(`https://sky-photography-server.vercel.app/allcomments/${params.id}`) 
         }
       ]
     },

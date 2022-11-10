@@ -15,7 +15,7 @@ const Editreview = () => {
             comment : comment
         }
         console.log(newComment)
-        fetch(`http://localhost:5000/allcomments/${_id}`,{
+        fetch(`https://sky-photography-server.vercel.app/allcomments/${_id}`,{
             method: 'PUT',
             headers:{
                 'content-type' : 'application/json'

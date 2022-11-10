@@ -8,10 +8,7 @@ import { Link } from 'react-router-dom';
 const Myreview = () => {
     useTitle('myreview')
     const {user,logout} = useContext(Authcontext);
-    const [userComment, setuserComment] = useState([])
-    // const [remainingComment, setremainingComment] = useState(userComment)
-    
-    
+    const [userComment, setuserComment] = useState([]);
     
     useEffect(()=>{
         if(!user?.email){
@@ -26,7 +23,7 @@ const Myreview = () => {
             </div>)
         }
         else{
-            fetch(`http://localhost:5000/allcomments/user?email=${user?.email}`,{
+            fetch(`https://sky-photography-server.vercel.app/allcomments/user?email=${user?.email}`,{
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('token')}`
                 }
@@ -40,34 +37,32 @@ const Myreview = () => {
             .then(data => {
                 console.log(data)
                 setuserComment(data)
-                // setremainingComment(data)
             })
             }
         },[user?.email ,logout])
-        // console.log(userComment)
+        
     
     
     function CommentDelete(_id){
         const agree = window.confirm('Do you want to delete this comment?')
 
         if(agree){
-            fetch(`http://localhost:5000/allcomments/${_id}`,{
+            fetch(`https://sky-photography-server.vercel.app/allcomments/${_id}`,{
                 method : 'DELETE'
             })
             .then(res => res.json())
             .then(data => {
                 console.log(data)
                 if(data.deletedCount > 0){
-                    const showCmt = userComment.filter(cmt => cmt._id !== _id);
-                    // setremainingComment(showCmt);
+                    const short = userComment.filter(cmnt => cmnt._id !== _id);
+                    setuserComment(short);
                     toast.success('Comment deleted successfully.')
-                    console.log(showCmt)
+                    console.log(short)
                 }
             })
         }
     }
 
-// console.log(remainingComment)
 
 //edit comment
 

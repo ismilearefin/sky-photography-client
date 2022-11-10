@@ -24,7 +24,7 @@ const Addservice = () => {
         }
         console.log(myservice)
         form.reset()
-        fetch('http://localhost:5000/allservices',{
+        fetch('https://sky-photography-server.vercel.app/allservices',{
             method: "POST",
             headers:{
                 'content-type': 'application/json',

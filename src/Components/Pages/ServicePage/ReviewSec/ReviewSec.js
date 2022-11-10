@@ -1,18 +1,7 @@
-import React, { useEffect, useState } from 'react';
+// import React, { useEffect, useState } from 'react';
 
-const ReviewSec = ({service}) => {
-    const [allcomments, setallcomments] = useState([]);
-
-    useEffect(()=>{
-            fetch(`http://localhost:5000/allcomments?service=${service}`)
-        .then(res => res.json())
-        .then(data => {
-            
-            setallcomments(data)
-        })
-    },[service])
-
-    console.log(allcomments,service,)
+const ReviewSec = ({allcomments}) => {
+    
     return (
         <div className="overflow-x-auto w-full">
         <table className="table w-full">
