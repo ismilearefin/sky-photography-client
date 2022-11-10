@@ -9,15 +9,15 @@ This is a Personal photography website, which comes with some packages. Users ca
 ## Framework
 
 tailwind CSS
-[daisyUI] (https://daisyui.com/)
+[daisyUI](https://daisyui.com/)
 
 ## icon
 
-[React icons] (https://react-icons.github.io/react-icons/)
+[React icons](https://react-icons.github.io/react-icons/)
 
 ## Spinner
 
-[React spinner] (https://www.npmjs.com/package/react-spinners)
+[React spinner](https://www.npmjs.com/package/react-spinners)
 
 ## Database
 
