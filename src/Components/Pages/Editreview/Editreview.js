@@ -13,7 +13,6 @@ const Editreview = () => {
         const newComment ={
             comment : comment
         }
-        console.log(newComment)
         fetch(`https://sky-photography-server.vercel.app/allcomments/${_id}`,{
             method: 'PUT',
             headers:{
@@ -28,7 +27,7 @@ const Editreview = () => {
                 navigate('/myreviews')
 
             }
-            console.log(data)
+            
         })
 
     }
