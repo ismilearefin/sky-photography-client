@@ -21,5 +21,5 @@ tailwind CSS
 
 ## Database
 
-MongoDB Atlas
+MongoDB 
   
