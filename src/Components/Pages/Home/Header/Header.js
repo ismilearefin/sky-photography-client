@@ -14,7 +14,7 @@ const Header = () => {
                 <Link to='/' className="btn btn-ghost italic normal-case text-xl font-bold">SKY <small className='text-sm'><FaSketch className='text-2xl text-cyan-400'/>photography</small></Link>
             </div>
             <div className='flex gap-5 font-bold '>
-                <NavLink to='/blog' className='btn btn-ghost '>Blogs</NavLink>
+                <NavLink to='/blog' className='btn btn-ghost '>Blog</NavLink>
                 {
                     user?.uid ?
                     <NavLink to='/myreviews' className='btn btn-ghost '>My reviews</NavLink>
