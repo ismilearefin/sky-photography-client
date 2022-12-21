@@ -41,7 +41,7 @@ return(
         <figure>
             <PhotoProvider>
                 <PhotoView src={img}>
-                <img src={img} alt="Shoes" />
+                <img src={img} alt="Shoes" className='hover:scale-110 transition duration-300 ease-in-out'/>
                 </PhotoView>
             </PhotoProvider>
         </figure>
